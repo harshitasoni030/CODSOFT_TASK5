@@ -1,0 +1,109 @@
+:root {
+  --bg: #e9eef4;
+  --panel: #ffffff;
+  --ink: #1c2b4a;
+  --muted: #5d6b85;
+  --line: #c9d3e2;
+  --pen: #2a54d6;
+  --error: #b3261e;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "IBM Plex Sans", system-ui, sans-serif;
+  line-height: 1.5;
+}
+
+.layout {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 48px 20px;
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 28px;
+  align-items: start;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 28px;
+}
+
+h1 { font-size: 1.5rem; margin: 0 0 8px; line-height: 1.2; }
+h2 { font-size: 1rem; margin: 0 0 14px; color: var(--muted); font-weight: 500; }
+.intro { margin: 0 0 24px; color: var(--muted); font-size: 0.95rem; }
+
+label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin: 18px 0 6px;
+}
+
+input[type="text"], input[type="number"] {
+  width: 100%;
+  padding: 10px 12px;
+  font: inherit;
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #fff;
+}
+
+input[type="range"] { width: 100%; accent-color: var(--pen); }
+.hint { margin: 4px 0 0; font-size: 0.8rem; color: var(--muted); }
+
+input:focus-visible, button:focus-visible {
+  outline: 2px solid var(--pen);
+  outline-offset: 2px;
+}
+
+button {
+  width: 100%;
+  margin-top: 24px;
+  padding: 12px;
+  font: inherit;
+  font-weight: 600;
+  color: #fff;
+  background: var(--pen);
+  border: 0;
+  border-radius: 6px;
+  cursor: pointer;
+}
+button:hover { background: #1f43b3; }
+button:disabled { background: #8da2e6; cursor: wait; }
+
+/* Ruled notebook paper for the generated text */
+.paper {
+  background-color: #fffef9;
+  background-image: repeating-linear-gradient(
+    to bottom, transparent 0, transparent 39px, #bfd0ee 39px, #bfd0ee 40px);
+  border: 1px solid var(--line);
+  border-left: 4px solid #e48b8b;
+  border-radius: 10px;
+  padding: 28px 28px 28px 32px;
+  min-height: 420px;
+}
+
+.output {
+  font-family: "Caveat", cursive;
+  font-size: 2rem;
+  line-height: 40px;
+  color: var(--pen);
+  word-break: break-all;
+  white-space: pre-wrap;
+}
+.output.empty { color: var(--muted); font-family: "IBM Plex Sans", sans-serif; font-size: 0.95rem; }
+.output.error { color: var(--error); font-family: "IBM Plex Sans", sans-serif; font-size: 0.95rem; }
+
+@media (max-width: 800px) {
+  .layout { grid-template-columns: 1fr; padding: 24px 14px; }
+}

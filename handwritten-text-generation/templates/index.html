@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Handwritten Text Generator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <main class="layout">
+    <section class="panel">
+      <h1>Handwritten Text Generator</h1>
+      <p class="intro">A character-level LSTM predicts one character at a time, starting from your seed text.</p>
+
+      <form id="generate-form" novalidate>
+        <label for="seed">Seed text</label>
+        <input type="text" id="seed" value="The" autocomplete="off">
+
+        <label for="length">Characters to generate</label>
+        <input type="number" id="length" value="100" min="1" max="1000">
+
+        <label for="temperature">
+          Temperature <output id="temp-value">0.8</output>
+        </label>
+        <input type="range" id="temperature" min="0.1" max="2" step="0.1" value="0.8">
+        <p class="hint">Lower is predictable. Higher is more random.</p>
+
+        <button type="submit" id="generate-btn">Generate text</button>
+      </form>
+    </section>
+
+    <section class="paper" aria-live="polite">
+      <h2>Generated text</h2>
+      <div id="output" class="output empty">Your generated text will appear here.</div>
+    </section>
+  </main>
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
